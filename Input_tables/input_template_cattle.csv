@@ -1,0 +1,107 @@
+AHLE.Parameter,ScenarioName
+Alpha_AF,"rep(1, times=100)"
+Alpha_AM,"rep(1, times=100)"
+Alpha_JF,"rep(1, times=100)"
+Alpha_JM,"rep(1, times=100)"
+Alpha_Ox,"rep(1, times=100)"
+Alpha_SubAF,"rep(1, times=100)"
+Alpha_SubAM,"rep(1, times=100)"
+avg_daily_yield_ltr,"rep(1, times=100)"
+Beta_AF,1
+Beta_AM,1
+Beta_JF,1
+Beta_JM,1
+Beta_Ox,1
+Beta_SubAF,1
+Beta_SubAM,1
+castration_proportion,"rep(1, times=100)"
+ccy,"rep(1, times=100)"
+CullF,1
+CullM,1
+CullOx,1
+DM_in_feed,"rep(1, times=100)"
+DM_req_prpn_AF,"rep(1, times=100)"
+DM_req_prpn_AM,"rep(1, times=100)"
+DM_req_prpn_JF,"rep(1, times=100)"
+DM_req_prpn_JM,"rep(1, times=100)"
+DM_req_prpn_Ox,"rep(1, times=100)"
+DM_req_prpn_SubAF,"rep(1, times=100)"
+DM_req_prpn_SubAM,"rep(1, times=100)"
+draught_day_value,"rep(1, times=100)"
+draught_rate,"rep(1, times=100)"
+Feed_cost_kg,"rep(1, times=100)"
+fvAF,"rep(1, times=100)"
+fvAM,"rep(1, times=100)"
+fvJF,"rep(1, times=100)"
+fvJM,"rep(1, times=100)"
+fvOx,"rep(1, times=100)"
+fvSubAF,"rep(1, times=100)"
+fvSubAM,"rep(1, times=100)"
+Gamma_AF,1
+Gamma_AM,1
+Gamma_JF,1
+Gamma_JM,1
+Gamma_Ox,1
+Gamma_SubAF,1
+Gamma_SubAM,1
+Health_exp_prev_AF,"rep(1, times=100)"
+Health_exp_prev_AM,"rep(1, times=100)"
+Health_exp_prev_JF,"rep(1, times=100)"
+Health_exp_prev_JM,"rep(1, times=100)"
+Health_exp_prev_Ox,"rep(1, times=100)"
+Health_exp_prev_SubAF,"rep(1, times=100)"
+Health_exp_prev_SubAM,"rep(1, times=100)"
+Health_exp_treatment_AF,"rep(1, times=100)"
+Health_exp_treatment_AM,"rep(1, times=100)"
+Health_exp_treatment_JF,"rep(1, times=100)"
+Health_exp_treatment_JM,"rep(1, times=100)"
+Health_exp_treatment_Ox,"rep(1, times=100)"
+Health_exp_treatment_SubAF,"rep(1, times=100)"
+Health_exp_treatment_SubAM,"rep(1, times=100)"
+hides_rate,1
+hides_rate_mor,"rep(1, times=100)"
+hides_value,"rep(1, times=100)"
+Infrastructure_per_head_AF,1
+Infrastructure_per_head_AM,1
+Infrastructure_per_head_JF,1
+Infrastructure_per_head_JM,1
+Infrastructure_per_head_Ox,1
+Infrastructure_per_head_SubAF,1
+Infrastructure_per_head_SubAM,1
+Interest_rate,1
+lab_non_health,1
+Labour_cost_head_AF,"rep(1, times=100)"
+Labour_cost_head_AM,"rep(1, times=100)"
+Labour_cost_head_dairy,"rep(1, times=100)"
+Labour_cost_head_JF,"rep(1, times=100)"
+Labour_cost_head_JM,"rep(1, times=100)"
+Labour_cost_head_Oxen,"rep(1, times=100)"
+Labour_cost_head_SubAF,"rep(1, times=100)"
+Labour_cost_head_SubAM,"rep(1, times=100)"
+lac_duration,"rep(1, times=100)"
+lwAF,"rep(1, times=100)"
+lwAM,"rep(1, times=100)"
+lwJF,"rep(1, times=100)"
+lwJM,"rep(1, times=100)"
+lwOx,"rep(1, times=100)"
+lwSubAF,"rep(1, times=100)"
+lwSubAM,"rep(1, times=100)"
+Man_A,"rep(1, times=100)"
+Man_J,"rep(1, times=100)"
+Man_SubA,"rep(1, times=100)"
+Man_value,"rep(1, times=100)"
+milk_value_ltr,"rep(1, times=100)"
+N_AF_t0,1
+N_AM_t0,1
+N_JF_t0,1
+N_JM_t0,1
+N_Ox_t0,1
+N_SubAF_t0,1
+N_SubAM_t0,1
+Num_timesteps,12
+part,"rep(1, times=100)"
+prolif,"rep(1, times=100)"
+prop_F_milked,"rep(1, times=100)"
+prpn_feed_paid_for,"rep(1, times=100)"
+prpn_lskeepers_purch_feed,"rep(1, times=100)"
+timestep_Nof_days,30

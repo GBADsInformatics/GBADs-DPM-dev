@@ -1,0 +1,86 @@
+AHLE.Parameter,ScenarioName
+Alpha_AF,"rep(1, times=1000)"
+Alpha_AM,"rep(1, times=1000)"
+Alpha_JF,"rep(1, times=1000)"
+Alpha_JM,"rep(1, times=1000)"
+Alpha_SubAF,"rep(1, times=1000)"
+Alpha_SubAM,"rep(1, times=1000)"
+Beta_AF,1
+Beta_AM,1
+Beta_JF,1
+Beta_JM,1
+Beta_SubAF,1
+Beta_SubAM,1
+ccy,"rep(1, times=1000)"
+CullF,1
+CullM,1
+DM_in_feed,"rep(1, times=1000)"
+DM_req_prpn_AF,"rep(1, times=1000)"
+DM_req_prpn_AM,"rep(1, times=1000)"
+DM_req_prpn_JF,"rep(1, times=1000)"
+DM_req_prpn_JM,"rep(1, times=1000)"
+DM_req_prpn_SubAF,"rep(1, times=1000)"
+DM_req_prpn_SubAM,"rep(1, times=1000)"
+egg_brood_rate,"rep(1, times=1000)"
+egg_consumption_rate,"rep(1, times=1000)"
+egg_price,"rep(1, times=1000)"
+egg_sale_rate,"rep(1, times=1000)"
+Feed_cost_kg,"rep(1, times=1000)"
+fvAF,"rep(1, times=1000)"
+fvAM,"rep(1, times=1000)"
+fvJF,"rep(1, times=1000)"
+fvJM,"rep(1, times=1000)"
+fvOx,"rep(1, times=1000)"
+fvSubAF,"rep(1, times=1000)"
+fvSubAM,"rep(1, times=1000)"
+Gamma_AF,"rep(1, times=1000)"
+Gamma_AM,"rep(1, times=1000)"
+Gamma_JF,"rep(1, times=1000)"
+Gamma_JM,"rep(1, times=1000)"
+Gamma_SubAF,"rep(1, times=1000)"
+Gamma_SubAM,"rep(1, times=1000)"
+hatch_rate,"rep(1, times=1000)"
+Health_exp_prev_AF,"rep(1, times=1000)"
+Health_exp_prev_AM,"rep(1, times=1000)"
+Health_exp_prev_JF,"rep(1, times=1000)"
+Health_exp_prev_JM,"rep(1, times=1000)"
+Health_exp_prev_SubAF,"rep(1, times=1000)"
+Health_exp_prev_SubAM,"rep(1, times=1000)"
+Health_exp_treatment_AF,"rep(1, times=1000)"
+Health_exp_treatment_AM,"rep(1, times=1000)"
+Health_exp_treatment_JF,"rep(1, times=1000)"
+Health_exp_treatment_JM,"rep(1, times=1000)"
+Health_exp_treatment_SubAF,"rep(1, times=1000)"
+Health_exp_treatment_SubAM,"rep(1, times=1000)"
+Infrastructure_per_head_AF,1
+Infrastructure_per_head_AM,1
+Infrastructure_per_head_JF,1
+Infrastructure_per_head_JM,1
+Infrastructure_per_head_SubAF,1
+Infrastructure_per_head_SubAM,1
+Interest_rate,1
+lab_non_health,1
+Labour_cost_head_AF,"rep(1, times=1000)"
+Labour_cost_head_AM,"rep(1, times=1000)"
+Labour_cost_head_JF,"rep(1, times=1000)"
+Labour_cost_head_JM,"rep(1, times=1000)"
+Labour_cost_head_SubAF,"rep(1, times=1000)"
+Labour_cost_head_SubAM,"rep(1, times=1000)"
+lay_rate,"rep(1, times=1000)"
+lwAF,"rep(1, times=1000)"
+lwAM,"rep(1, times=1000)"
+lwJF,"rep(1, times=1000)"
+lwJM,"rep(1, times=1000)"
+lwSubAF,"rep(1, times=1000)"
+lwSubAM,"rep(1, times=1000)"
+N_AF_t0,1
+N_AM_t0,1
+N_JF_t0,1
+N_JM_t0,1
+N_SubAF_t0,1
+N_SubAM_t0,1
+Num_timesteps,12
+prop_females_laying,"rep(1, times=1000)"
+prpn_feed_paid_for,"rep(1, times=1000)"
+prpn_lskeepers_purch_feed,"rep(1, times=1000)"
+timestep_Nof_days,30
