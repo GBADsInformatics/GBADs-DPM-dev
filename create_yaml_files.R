@@ -1,8 +1,8 @@
 ########################
 # name: create_yaml_files.R
 # created by: Anne Meyer
-# create on: 2023_10_05
-# modified on: 2025_12_05 (converted to csv inputs + multiple countries)
+# created on: 2023_10_05
+# modified on: 2026_01_02
 # content: read the input csv files and create yaml files for each scenario column
 ########################
 
@@ -18,7 +18,10 @@ df <- read.csv(myFileName)
 keys <- as.character(df$AHLE.Parameter)
 df_val <- df[, -1, drop=F]
 
-# !! adjust text below to use the correct species name and number of iterations. Adjust seed_value if you want 
+# !! adjust code below to use the correct species name and number of iterations. Adjust seed_value if you want 
+# for testing, we are using the species from the scenario header, make sure it is one of the four accepted species (cattle, smallruminants, poultry, equids)
+species <- names(df_val)
+
 extras <- paste0("
 species: ",species,"
 nruns: ",numSamples,"

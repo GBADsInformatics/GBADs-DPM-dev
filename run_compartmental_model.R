@@ -169,14 +169,16 @@ run_compartmental_model <- function(seed_value = NULL) {
     "Quantity_meat_kg", 
     
     "Num_offtake", 
-    "Num_offtake_SubAF", 
-    "Num_offtake_SubAM", 
+    "Num_offtake_JF", 
+    "Num_offtake_JM", 
     "Num_offtake_SubAF", 
     "Num_offtake_SubAM", 
     "Num_offtake_AF", 
     "Num_offtake_AM", 
     
     "Offtake_liveweight_kg", 
+    "Offtake_liveweight_kg_JF", 
+    "Offtake_liveweight_kg_JM", 
     "Offtake_liveweight_kg_SubAF", 
     "Offtake_liveweight_kg_SubAM", 
     "Offtake_liveweight_kg_AF", 
@@ -447,14 +449,16 @@ run_compartmental_model <- function(seed_value = NULL) {
                          "Quantity_meat_kg", 
                          
                          "Num_offtake", 
-                         "Num_offtake_SubAF", 
-                         "Num_offtake_SubAM", 
+                         "Num_offtake_JF", 
+                         "Num_offtake_JM", 
                          "Num_offtake_SubAF", 
                          "Num_offtake_SubAM", 
                          "Num_offtake_AF", 
                          "Num_offtake_AM", 
                          
                          "Offtake_liveweight_kg", 
+                         "Offtake_liveweight_kg_JF", 
+                         "Offtake_liveweight_kg_JM", 
                          "Offtake_liveweight_kg_SubAF", 
                          "Offtake_liveweight_kg_SubAM", 
                          "Offtake_liveweight_kg_AF", 
@@ -703,15 +707,7 @@ run_compartmental_model <- function(seed_value = NULL) {
   for (i in 1:nruns) {
     # Total population is sum of age*sex segments
     # Define population variables and set initial values from function arguments
-  
-    Nt0 <- sum(N_JF_t0, N_JM_t0, N_SubAF_t0, N_SubAM_t0, N_AF_t0, N_AM_t0)
     
-    if (species == "cattle") {
-      Nt0 <- Nt0 + N_Ox_t0 
-    }
-    
-    # Define population variables and set initial values from function arguments
-    N <- Nt0
     age_sex_groups <- c("JF", "JM", "SubAF", "SubAM", "AF", "AM")
     
     if (species == "cattle") {
@@ -720,9 +716,18 @@ run_compartmental_model <- function(seed_value = NULL) {
     
     for (group in age_sex_groups) {
       var_name <- group  
-      value <- get(paste0("N_", group, "_t0"))  
+      value <- sample(get(paste0("N_", group, "_t0")),1) ### GEMMA EDITED HERE to sample start population size from a distribution 
       assign(var_name, value)  
+      assign(paste0("N_", group), value) ### GEMMA EDITED HERE to ensure N_group_t0 is the same as the group number
+    }                                    
+    
+    # Total population is sum of age*sex segments
+    Nt0 <- sum(N_JF, N_JM, N_SubAF, N_SubAM, N_AF, N_AM) ## removed _t0
+    
+    if (species == "cattle") {
+      Nt0 <- Nt0 + N_Ox
     }
+    N <- Nt0
     
     
     prop_groups <- c(pJF_t0 = JF/N, 
@@ -867,17 +872,16 @@ run_compartmental_model <- function(seed_value = NULL) {
       
       
       ## These Offtake equations are changed so that small ruminants is the same as others
-      ## NOTE UPDATE Small Ruminants inputs spreadsheet for Gamma_JF and Gamma_JM and Gamma_SubAF and Gamma_SubAM
       ## Offtake rate equations changed to be the risk of offtake during the time spent in that age group
       ## to the power of 1/12 of if Beta_ (duration of stay in this time step)  <num_timesteps (a year), 
       ## use Num_timesteps
       if (species == "cattle" ) {
-        res_vec$Offtake_JF[month] <- (1-(1-Gamma_JF)^(1/Beta_JF)) * JF
-        res_vec$Offtake_JM[month] <- (1-(1-Gamma_JM)^(1/Beta_JM)) * JM
-        res_vec$Offtake_SubAF[month] <- (1-(1-Gamma_SubAF)^(1/Num_timesteps)) * SubAF ## assuming subadults for >= 1 year
-        res_vec$Offtake_SubAM[month] <- (1-(1-Gamma_SubAM)^(1/Num_timesteps)) * SubAM ## assuming subadults for >= 1 year
-        res_vec$Offtake_AF[month] <- (1-(1-Gamma_AF)^(1/Num_timesteps)) * AF
-        res_vec$Offtake_AM[month] <- (1-(1-Gamma_AM)^(1/Num_timesteps)) * AM
+        res_vec$Offtake_JF[month] <- (1-(1-sample(Gamma_JF, 1))^(1/Beta_JF)) * JF
+        res_vec$Offtake_JM[month] <- (1-(1-sample(Gamma_JM, 1))^(1/Beta_JM)) * JM
+        res_vec$Offtake_SubAF[month] <- (1-(1-sample(Gamma_SubAF, 1))^(1/Num_timesteps)) * SubAF ## assuming subadults for >= 1 year
+        res_vec$Offtake_SubAM[month] <- (1-(1-sample(Gamma_SubAM, 1))^(1/Num_timesteps)) * SubAM ## assuming subadults for >= 1 year
+        res_vec$Offtake_AF[month] <- (1-(1-sample(Gamma_AF, 1))^(1/Num_timesteps)) * AF
+        res_vec$Offtake_AM[month] <- (1-(1-sample(Gamma_AM, 1))^(1/Num_timesteps)) * AM
         
       } 
       ## seperated for small ruminants and poultry ## Different to cattle because they are in the second age sex group < 1 year
@@ -892,12 +896,12 @@ run_compartmental_model <- function(seed_value = NULL) {
       } 
       
       if (species == "equids") {
-        res_vec$Offtake_JF[month] <- (1-(1-Gamma_JF)^(1/Num_timesteps)) * JF
-        res_vec$Offtake_JM[month] <- (1-(1-Gamma_JM)^(1/Num_timesteps)) * JM
-        res_vec$Offtake_SubAF[month] <- (1-(1-Gamma_SubAF)^(1/Num_timesteps)) * SubAF ## offtake for subadults assuming <12 months
-        res_vec$Offtake_SubAM[month] <- (1-(1-Gamma_SubAM)^(1/Num_timesteps)) * SubAM ## offtake for subadults assuming <12 months
-        res_vec$Offtake_AF[month] <- (1-(1-Gamma_AF)^(1/Num_timesteps)) * AF
-        res_vec$Offtake_AM[month] <- (1-(1-Gamma_AM)^(1/Num_timesteps)) * AM
+        res_vec$Offtake_JF[month] <- (1-(1-sample(Gamma_JF, 1))^(1/Num_timesteps)) * JF
+        res_vec$Offtake_JM[month] <- (1-(1-sample(Gamma_JM, 1))^(1/Num_timesteps)) * JM
+        res_vec$Offtake_SubAF[month] <- (1-(1-sample(Gamma_SubAF, 1))^(1/Num_timesteps)) * SubAF ## offtake for subadults assuming <12 months
+        res_vec$Offtake_SubAM[month] <- (1-(1-sample(Gamma_SubAM, 1))^(1/Num_timesteps)) * SubAM ## offtake for subadults assuming <12 months
+        res_vec$Offtake_AF[month] <- (1-(1-sample(Gamma_AF, 1))^(1/Num_timesteps)) * AF
+        res_vec$Offtake_AM[month] <- (1-(1-sample(Gamma_AM, 1))^(1/Num_timesteps)) * AM
         
       } 
       
@@ -1020,16 +1024,16 @@ run_compartmental_model <- function(seed_value = NULL) {
       
       if (species == "cattle" || species == "smallruminants" || species == "poultry" || species == "equids") {
         res_vec$Pop_growth[month] <- N - Nt0
-        res_vec$Pop_growth_JF[month] <- JF - N_JF_t0
-        res_vec$Pop_growth_JM[month] <- JM - N_JM_t0
-        res_vec$Pop_growth_SubAF[month] <- SubAF - N_SubAF_t0
-        res_vec$Pop_growth_SubAM[month] <- SubAM - N_SubAM_t0
-        res_vec$Pop_growth_AF[month] <- AF - N_AF_t0
-        res_vec$Pop_growth_AM[month] <- AM - N_AM_t0
+        res_vec$Pop_growth_JF[month] <- JF - N_JF
+        res_vec$Pop_growth_JM[month] <- JM - N_JM
+        res_vec$Pop_growth_SubAF[month] <- SubAF - N_SubAF
+        res_vec$Pop_growth_SubAM[month] <- SubAM - N_SubAM
+        res_vec$Pop_growth_AF[month] <- AF - N_AF
+        res_vec$Pop_growth_AM[month] <- AM - N_AM
       }
       
       if (species == "cattle") {
-        res_vec$Pop_growth_Ox[month] <- Ox - N_Ox_t0
+        res_vec$Pop_growth_Ox[month] <- Ox - N_Ox
       }
       
       if (species == "cattle" || species == "smallruminants" || species == "poultry" || species == "equids") {
@@ -1099,12 +1103,16 @@ run_compartmental_model <- function(seed_value = NULL) {
         ## QUESTION HERE for Wudu, it doesn't matter too much now as we don't use meat produced value, 
         ## but here we could preplace liveweight distribution with a finish weight distribution as 
         ## this is what we have done for the Indonesia model - or is this unnecessary in the extensive system?
+        res_vec$Offtake_liveweight_kg_JF[month] <- liveweight_JF * Offtake_JF
+        res_vec$Offtake_liveweight_kg_JM[month] <- liveweight_JM * Offtake_JM
         res_vec$Offtake_liveweight_kg_SubAF[month] <- liveweight_SubAF * Offtake_SubAF
         res_vec$Offtake_liveweight_kg_SubAM[month] <- liveweight_SubAM * Offtake_SubAM
         res_vec$Offtake_liveweight_kg_AF[month] <- liveweight_AF * Offtake_AF
         res_vec$Offtake_liveweight_kg_AM[month] <- liveweight_AM * Offtake_AM
       
-        res_vec$Offtake_liveweight_kg[month] <- sum(res_vec$Offtake_liveweight_kg_SubAF[month],
+        res_vec$Offtake_liveweight_kg[month] <- sum(res_vec$Offtake_liveweight_kg_JF[month],
+                                                    res_vec$Offtake_liveweight_kg_JM[month],
+                                                    res_vec$Offtake_liveweight_kg_SubAF[month],
                                                     res_vec$Offtake_liveweight_kg_SubAM[month],
                                                     res_vec$Offtake_liveweight_kg_AF[month],
                                                     res_vec$Offtake_liveweight_kg_AM[month])
@@ -1450,7 +1458,13 @@ run_compartmental_model <- function(seed_value = NULL) {
       fin_val_AM <- sample(fvAM, 1)
       
       
-      res_vec$Value_offtake_SubAF[month] <- fin_val_SubAF * Offtake_SubAF 
+      res_vec$Value_offtake_JF[month] <- fin_val_JF * Offtake_JF 
+      Value_offtake_JF <- res_vec$Value_offtake_JF[month]
+      
+      res_vec$Value_offtake_JM[month] <- fin_val_JM * Offtake_JM
+      Value_offtake_JM <- res_vec$Value_offtake_JM[month]
+     
+       res_vec$Value_offtake_SubAF[month] <- fin_val_SubAF * Offtake_SubAF 
       Value_offtake_SubAF <- res_vec$Value_offtake_SubAF[month]
       
       res_vec$Value_offtake_SubAM[month] <- fin_val_SubAM * Offtake_SubAM
@@ -1462,7 +1476,9 @@ run_compartmental_model <- function(seed_value = NULL) {
       res_vec$Value_offtake_AM[month] <- fin_val_AM * Offtake_AM  
       Value_offtake_AM <- res_vec$Value_offtake_AM[month]
       
-      res_vec$Value_offtake[month] <- sum(res_vec$Value_offtake_SubAF[month],
+      res_vec$Value_offtake[month] <- sum(res_vec$Value_offtake_JF[month],
+                                          res_vec$Value_offtake_JM[month],
+                                          res_vec$Value_offtake_SubAF[month],
                                          res_vec$Value_offtake_SubAM[month],
                                          res_vec$Value_offtake_AF[month],
                                          res_vec$Value_offtake_AM[month])
@@ -1480,22 +1496,22 @@ run_compartmental_model <- function(seed_value = NULL) {
       
       Value_offtake <- res_vec$Value_offtake[month] 
       
-      res_vec$Value_herd_increase_JF[month] <- (JF - N_JF_t0) * fin_val_JF
+      res_vec$Value_herd_increase_JF[month] <- (JF - N_JF) * fin_val_JF
       Value_herd_inc_JF <- res_vec$Value_herd_increase_JF[month]
       
-      res_vec$Value_herd_increase_JM[month] <- (JM - N_JM_t0) * fin_val_JM
+      res_vec$Value_herd_increase_JM[month] <- (JM - N_JM) * fin_val_JM
       Value_herd_inc_JM <- res_vec$Value_herd_increase_JM[month]
       
-      res_vec$Value_herd_increase_SubAF[month] <- (SubAF - N_SubAF_t0) * fin_val_SubAF
+      res_vec$Value_herd_increase_SubAF[month] <- (SubAF - N_SubAF) * fin_val_SubAF
       Value_herd_inc_SubAF <- res_vec$Value_herd_increase_SubAF[month]
       
-      res_vec$Value_herd_increase_SubAM[month] <- (SubAM - N_SubAM_t0) * fin_val_SubAM
+      res_vec$Value_herd_increase_SubAM[month] <- (SubAM - N_SubAM) * fin_val_SubAM
       Value_herd_inc_SubAM <- res_vec$Value_herd_increase_SubAM[month]
       
-      res_vec$Value_herd_increase_AF[month] <- (AF - N_AF_t0) * fin_val_AF
+      res_vec$Value_herd_increase_AF[month] <- (AF - N_AF) * fin_val_AF
       Value_herd_inc_AF <- res_vec$Value_herd_increase_AF[month]
       
-      res_vec$Value_herd_increase_AM[month] <- (AM - N_AM_t0) * fin_val_AM
+      res_vec$Value_herd_increase_AM[month] <- (AM - N_AM) * fin_val_AM
       Value_herd_inc_AM <- res_vec$Value_herd_increase_AM[month]
       
       res_vec$Value_herd_increase[month] <- sum(res_vec$Value_herd_increase_JF[month],
@@ -1508,7 +1524,7 @@ run_compartmental_model <- function(seed_value = NULL) {
     }
       
       if (species == "cattle") {
-        res_vec$Value_herd_increase_Ox[month] <- (Ox - N_Ox_t0) * fin_val_Ox
+        res_vec$Value_herd_increase_Ox[month] <- (Ox - N_Ox) * fin_val_Ox
         Value_herd_inc_Ox <- res_vec$Value_herd_increase_Ox[month]
         res_vec$Value_herd_increase[month] <- res_vec$Value_herd_increase[month] + res_vec$Value_herd_increase_Ox[month]
       }
@@ -1518,8 +1534,8 @@ run_compartmental_model <- function(seed_value = NULL) {
       Value_herd_inc <- res_vec$Value_herd_increase[month]
       
       res_vec$Total_value_increase[month] <- Value_herd_inc + Value_offtake ## Total_value already includes oxen
-      res_vec$Total_value_increase_JF[month] <- Value_herd_inc_JF 
-      res_vec$Total_value_increase_JM[month] <- Value_herd_inc_JM 
+      res_vec$Total_value_increase_JF[month] <- Value_herd_inc_JF + Value_offtake_JF
+      res_vec$Total_value_increase_JM[month] <- Value_herd_inc_JM + Value_offtake_JM
       res_vec$Total_value_increase_SubAF[month] <- Value_herd_inc_SubAF + Value_offtake_SubAF
       res_vec$Total_value_increase_SubAM[month] <- Value_herd_inc_SubAM + Value_offtake_SubAM
       res_vec$Total_value_increase_AF[month] <- Value_herd_inc_AF + Value_offtake_AF
@@ -1799,27 +1815,25 @@ run_compartmental_model <- function(seed_value = NULL) {
       }
       
       
-    ## GEMMA CHANGED these numbers from [1] to set numbers at time zero (eg. N_JF_t0), like infrastructure calculations
-    ## below it is better to use the defined starting population numbers rather than the numbers at timestep[1]
-    
+
       if (species == "cattle" || species == "smallruminants" || species == "poultry" || species == "equids") {
         
-        res_vec$Capital_cost_JF[month] <- N_JF_t0 * fin_val_JF * Interest_rate 
+        res_vec$Capital_cost_JF[month] <- N_JF * fin_val_JF * Interest_rate 
         Capital_JF <- res_vec$Capital_cost_JF[month]
      
-        res_vec$Capital_cost_JM[month] <- N_JM_t0 * fin_val_JM * Interest_rate  
+        res_vec$Capital_cost_JM[month] <- N_JM * fin_val_JM * Interest_rate  
         Capital_JM <- res_vec$Capital_cost_JM[month]
      
-        res_vec$Capital_cost_SubAF[month] <-N_SubAF_t0 * fin_val_SubAF * Interest_rate  
+        res_vec$Capital_cost_SubAF[month] <-N_SubAF * fin_val_SubAF * Interest_rate  
         Capital_SubAF = res_vec$Capital_cost_SubAF[month]
      
-        res_vec$Capital_cost_SubAM[month] <- N_SubAM_t0 * fin_val_SubAM * Interest_rate  
+        res_vec$Capital_cost_SubAM[month] <- N_SubAM * fin_val_SubAM * Interest_rate  
         Capital_SubAM <- res_vec$Capital_cost_SubAM[month]
      
-        res_vec$Capital_cost_AF[month] <- N_AF_t0[1] * fin_val_AF * Interest_rate  
+        res_vec$Capital_cost_AF[month] <- N_AF[1] * fin_val_AF * Interest_rate  
         Capital_AF <- res_vec$Capital_cost_AF[month]
      
-        res_vec$Capital_cost_AM[month] <- N_AM_t0 * fin_val_AM * Interest_rate  
+        res_vec$Capital_cost_AM[month] <- N_AM * fin_val_AM * Interest_rate  
         Capital_AM <- res_vec$Capital_cost_AM[month]
      
         res_vec$Capital_cost[month] <- sum(res_vec$Capital_cost_JF[month],
@@ -1833,7 +1847,7 @@ run_compartmental_model <- function(seed_value = NULL) {
       }
      
      if (species == "cattle") {
-       res_vec$Capital_cost_Ox[month] <- N_Ox_t0 * fin_val_Ox * Interest_rate
+       res_vec$Capital_cost_Ox[month] <- N_Ox * fin_val_Ox * Interest_rate
        Capital_Ox <- res_vec$Capital_cost_Ox[month]
        res_vec$Capital_cost[month] <- res_vec$Capital_cost[month] + res_vec$Capital_cost_Ox[month]
      }
@@ -1845,12 +1859,12 @@ run_compartmental_model <- function(seed_value = NULL) {
     if (species == "cattle" || species == "smallruminants" || species == "poultry" || species == "equids") {
     
        ### For equids this is fixed cost including barn and cart maintenance
-     res_vec$Infrastructure_cost_JF[month] <- N_JF_t0 * sample(Infrastructure_per_head_JF, 1)
-     res_vec$Infrastructure_cost_JM[month] <- N_JM_t0 * sample(Infrastructure_per_head_JM, 1)
-     res_vec$Infrastructure_cost_SubAF[month] <- N_SubAF_t0 * sample(Infrastructure_per_head_SubAF, 1)
-     res_vec$Infrastructure_cost_SubAM[month] <- N_SubAM_t0 * sample(Infrastructure_per_head_SubAM, 1)
-     res_vec$Infrastructure_cost_AF[month] <- N_AF_t0 * sample(Infrastructure_per_head_AF, 1)
-     res_vec$Infrastructure_cost_AM[month] <- N_AM_t0 * sample(Infrastructure_per_head_AM, 1)
+     res_vec$Infrastructure_cost_JF[month] <- N_JF * sample(Infrastructure_per_head_JF, 1)
+     res_vec$Infrastructure_cost_JM[month] <- N_JM * sample(Infrastructure_per_head_JM, 1)
+     res_vec$Infrastructure_cost_SubAF[month] <- N_SubAF * sample(Infrastructure_per_head_SubAF, 1)
+     res_vec$Infrastructure_cost_SubAM[month] <- N_SubAM * sample(Infrastructure_per_head_SubAM, 1)
+     res_vec$Infrastructure_cost_AF[month] <- N_AF * sample(Infrastructure_per_head_AF, 1)
+     res_vec$Infrastructure_cost_AM[month] <- N_AM * sample(Infrastructure_per_head_AM, 1)
      
      res_vec$Infrastructure_cost[month] <- sum(res_vec$Infrastructure_cost_JF[month],
                                                res_vec$Infrastructure_cost_JM[month],
@@ -1861,7 +1875,7 @@ run_compartmental_model <- function(seed_value = NULL) {
     }
      
      if (species == "cattle") {
-       res_vec$Infrastructure_cost_Ox[month] <- N_Ox_t0 * sample(Infrastructure_per_head_Ox, 1)
+       res_vec$Infrastructure_cost_Ox[month] <- N_Ox * sample(Infrastructure_per_head_Ox, 1)
        res_vec$Infrastructure_cost[month] <- res_vec$Infrastructure_cost[month] + res_vec$Infrastructure_cost_Ox[month]
      }
       
@@ -1869,12 +1883,12 @@ run_compartmental_model <- function(seed_value = NULL) {
       if (species == "equids") {
         
         ### For accessory cost is feeder, harness, ropes etc
-        res_vec$Accessory_cost_JF[month] <- N_JF_t0 * sample(Acce_cost_head_JF, 1)
-        res_vec$Accessory_cost_JM[month] <- N_JM_t0 * sample(Acce_cost_head_JM, 1)
-        res_vec$Accessory_cost_SubAF[month] <- N_SubAF_t0 * sample(Acce_cost_head_SubAF, 1)
-        res_vec$Accessory_cost_SubAM[month] <- N_SubAM_t0 * sample(Acce_cost_head_SubAM, 1)
-        res_vec$Accessory_cost_AF[month] <- N_AF_t0 * sample(Acce_cost_head_AF, 1)
-        res_vec$Accessory_cost_AM[month] <- N_AM_t0 * sample(Acce_cost_head_AM, 1)
+        res_vec$Accessory_cost_JF[month] <- N_JF * sample(Acce_cost_head_JF, 1)
+        res_vec$Accessory_cost_JM[month] <- N_JM * sample(Acce_cost_head_JM, 1)
+        res_vec$Accessory_cost_SubAF[month] <- N_SubAF * sample(Acce_cost_head_SubAF, 1)
+        res_vec$Accessory_cost_SubAM[month] <- N_SubAM * sample(Acce_cost_head_SubAM, 1)
+        res_vec$Accessory_cost_AF[month] <- N_AF * sample(Acce_cost_head_AF, 1)
+        res_vec$Accessory_cost_AM[month] <- N_AM * sample(Acce_cost_head_AM, 1)
         
         res_vec$Accessory_cost[month] <- sum(res_vec$Accessory_cost_JF[month],
                                                   res_vec$Accessory_cost_JM[month],
@@ -1967,8 +1981,8 @@ run_compartmental_model <- function(seed_value = NULL) {
     
     res_mat$Num_offtake[i, ] <- res_vec$Num_offtake
     
-    res_mat$Num_offtake_SubAF[i, ] <- res_vec$Num_offtake_SubAF
-    res_mat$Num_offtake_SubAM[i, ] <- res_vec$Num_offtake_SubAM
+    res_mat$Num_offtake_JF[i, ] <- res_vec$Num_offtake_JF
+    res_mat$Num_offtake_JM[i, ] <- res_vec$Num_offtake_JM
     res_mat$Num_offtake_SubAF[i, ] <- res_vec$Num_offtake_SubAF
     res_mat$Num_offtake_SubAM[i, ] <- res_vec$Num_offtake_SubAM
     res_mat$Num_offtake_AF[i, ] <- res_vec$Num_offtake_AF
@@ -1976,6 +1990,8 @@ run_compartmental_model <- function(seed_value = NULL) {
     
     res_mat$Offtake_liveweight_kg[i, ] <- res_vec$Offtake_liveweight_kg
     
+    res_mat$Offtake_liveweight_kg_JF[i, ] <- res_vec$Offtake_liveweight_kg_JF
+    res_mat$Offtake_liveweight_kg_JM[i, ] <- res_vec$Offtake_liveweight_kg_JM
     res_mat$Offtake_liveweight_kg_SubAF[i, ] <- res_vec$Offtake_liveweight_kg_SubAF
     res_mat$Offtake_liveweight_kg_SubAM[i, ] <- res_vec$Offtake_liveweight_kg_SubAM
     res_mat$Offtake_liveweight_kg_AF[i, ] <- res_vec$Offtake_liveweight_kg_AF
@@ -2042,7 +2058,7 @@ run_compartmental_model <- function(seed_value = NULL) {
     res_mat$Value_offtake[i, ] <- res_vec$Value_offtake
     res_mat$Value_offtake_JF[i, ] <- res_vec$Value_offtake_JF
     res_mat$Value_offtake_JM[i, ] <- res_vec$Value_offtake_JM
-    
+
     res_mat$Value_offtake_SubAF[i, ] <- res_vec$Value_offtake_SubAF
     res_mat$Value_offtake_SubAM[i, ] <- res_vec$Value_offtake_SubAM
     res_mat$Value_offtake_AF[i, ] <- res_vec$Value_offtake_AF
@@ -2218,9 +2234,8 @@ run_compartmental_model <- function(seed_value = NULL) {
     }
     
   } # end nruns loop
-  ## some errors here in the script corrected, replaced SubAF with JF etc
-  Total_number_change_JF <-  res_mat$Pop_growth_JF
-  Total_number_change_JM <-  res_mat$Pop_growth_JM
+  Total_number_change_JF <-  res_mat$Num_offtake_JF + res_mat$Pop_growth_JF
+  Total_number_change_JM <-  res_mat$Num_offtake_JM + res_mat$Pop_growth_JM
   Total_number_change_SubAF <- res_mat$Num_offtake_SubAF + res_mat$Pop_growth_SubAF
   Total_number_change_SubAM <- res_mat$Num_offtake_SubAM + res_mat$Pop_growth_SubAM
   Total_number_change_AF <- res_mat$Num_offtake_AF + res_mat$Pop_growth_AF
