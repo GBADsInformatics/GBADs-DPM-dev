@@ -9,7 +9,6 @@ library(tools)
 
 numSamples <- 100
 seedValue <- 123
-species <- "smallruminants"
 
 # working directory
 setwd(choose.dir())
