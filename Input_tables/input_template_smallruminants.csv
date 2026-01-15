@@ -1,4 +1,4 @@
-AHLE.Parameter,ScenarioName
+AHLE.Parameter,smallruminants
 Alpha_AF,"rep(1, times=100)"
 Alpha_AM,"rep(1, times=100)"
 Alpha_JF,"rep(1, times=100)"
@@ -27,7 +27,6 @@ fvAF,"rep(1, times=100)"
 fvAM,"rep(1, times=100)"
 fvJF,"rep(1, times=100)"
 fvJM,"rep(1, times=100)"
-fvOx,"rep(1, times=100)"
 fvSubAF,"rep(1, times=100)"
 fvSubAM,"rep(1, times=100)"
 Gamma_AF,"rep(1, times=100)"
@@ -78,12 +77,12 @@ Man_J,"rep(1, times=100)"
 Man_SubA,"rep(1, times=100)"
 Man_value,"rep(1, times=100)"
 milk_value_ltr,"rep(1, times=100)"
-N_AF_t0,1
-N_AM_t0,1
-N_JF_t0,1
-N_JM_t0,1
-N_SubAF_t0,1
-N_SubAM_t0,1
+N_AF_t0,"rep(1, times=100)"
+N_AM_t0,"rep(1, times=100)"
+N_JF_t0,"rep(1, times=100)"
+N_JM_t0,"rep(1, times=100)"
+N_SubAF_t0,"rep(1, times=100)"
+N_SubAM_t0,"rep(1, times=100)"
 Num_timesteps,12
 part,"rep(1, times=100)"
 prolif,"rep(1, times=100)"
@@ -91,3 +90,17 @@ prop_F_milked,"rep(1, times=100)"
 prpn_feed_paid_for,"rep(1, times=100)"
 prpn_lskeepers_purch_feed,"rep(1, times=100)"
 timestep_Nof_days,30
+milk_MEreqPerKG,1
+milk_DM_req_perKG,1
+MEreqPerKG_JF,1
+MEreqPerKG_JM,1
+MEreqPerKG_SubAF,1
+MEreqPerKG_SubAM,1
+MEreqPerKG_AF,1
+MEreqPerKG_AM,1
+Methane_per_kgDMI_AF,1
+Methane_per_kgDMI_AM,1
+Methane_per_kgDMI_JF,1
+Methane_per_kgDMI_JM,1
+Methane_per_kgDMI_SubAF,1
+Methane_per_kgDMI_SubAM,1
