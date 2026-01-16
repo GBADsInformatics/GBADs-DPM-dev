@@ -90,8 +90,6 @@ fvJF: rep(1,times=1000)
 
 fvJM: rep(1,times=1000)
 
-fvOx: rep(1,times=1000)
-
 fvSubAF: rep(1,times=1000)
 
 fvSubAM: rep(1,times=1000)
