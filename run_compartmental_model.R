@@ -2401,7 +2401,7 @@ run_compartmental_model <- function(seed_value = NULL) {
           res_vec$Foraged_Feed_KG_GltF[month] <- res_vec$Feed_required_KG_GltF[month] - res_vec$Purchased_Feed_KG_GltF[month]
           res_vec$Foraged_Feed_KG_GltM[month] <- res_vec$Feed_required_KG_GltM[month] - res_vec$Purchased_Feed_KG_GltM[month]
           
-          res_vec$Foraged_Feed_KG_KG[month] <- res_vec$Foraged_Feed_KG_KG[month] +
+          res_vec$Foraged_Feed_KG[month] <- res_vec$Foraged_Feed_KG[month] +
             res_vec$Foraged_Feed_KG_GF[month] +
             res_vec$Foraged_Feed_KG_GM[month] +
             res_vec$Foraged_Feed_KG_GltF[month] +
