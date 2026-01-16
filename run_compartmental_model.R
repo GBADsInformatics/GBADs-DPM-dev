@@ -2254,7 +2254,7 @@ run_compartmental_model <- function(seed_value = NULL) {
         res_vec$Purchased_Feed_KG[month] <- sum(res_vec$Purchased_Feed_KG_JF[month],
                                                res_vec$Purchased_Feed_KG_JM[month],
                                                res_vec$Purchased_Feed_KG_SubAF[month],
-                                               res_vec$Purchased_Feed_SubAM[month],
+                                               res_vec$Purchased_Feed_KG_SubAM[month],
                                                res_vec$Purchased_Feed_KG_AF[month],
                                                res_vec$Purchased_Feed_KG_AM[month])
         
