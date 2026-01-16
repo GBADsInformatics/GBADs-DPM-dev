@@ -1,0 +1,344 @@
+##### equids #####
+
+
+species: equids
+nruns: 100
+seed_value: NULL
+
+
+Acce_cost_head_AF: rep(1,times=1000)
+
+Acce_cost_head_AM: rep(1,times=1000)
+
+Acce_cost_head_JF: rep(1,times=1000)
+
+Acce_cost_head_JM: rep(1,times=1000)
+
+Acce_cost_head_SubAF: rep(1,times=1000)
+
+Acce_cost_head_SubAM: rep(1,times=1000)
+
+Alpha_AF: rep(1,times=1000)
+
+Alpha_AM: rep(1,times=1000)
+
+Alpha_JF: rep(1,times=1000)
+
+Alpha_JM: rep(1,times=1000)
+
+Alpha_SubAF: rep(1,times=1000)
+
+Alpha_SubAM: rep(1,times=1000)
+
+Beta_AF: 1
+
+Beta_AM: 1
+
+Beta_JF: 1
+
+Beta_JM: 1
+
+Beta_SubAF: 1
+
+Beta_SubAM: 1
+
+CullF: 1
+
+CullM: 1
+
+days_worked_month_combined_AF: 1
+
+days_worked_month_combined_AM: 1
+
+days_worked_month_combined_SubAF: 1
+
+days_worked_month_combined_SubAM: 1
+
+days_worked_month_commercial_AF: 1
+
+days_worked_month_commercial_AM: 1
+
+days_worked_month_unpaid_AF: 1
+
+days_worked_month_unpaid_AM: 1
+
+days_worked_month_unpaid_SubAF: 1
+
+days_worked_month_unpaid_SubAM: 1
+
+DM_in_feed: rep(1,times=1000)
+
+DM_req_prpn_AF: rep(1,times=1000)
+
+DM_req_prpn_AM: rep(1,times=1000)
+
+DM_req_prpn_JF: rep(1,times=1000)
+
+DM_req_prpn_JM: rep(1,times=1000)
+
+DM_req_prpn_SubAF: rep(1,times=1000)
+
+DM_req_prpn_SubAM: rep(1,times=1000)
+
+Feed_cost_kg: rep(1,times=1000)
+
+fvAF: rep(1,times=1000)
+
+fvAM: rep(1,times=1000)
+
+fvJF: rep(1,times=1000)
+
+fvJM: rep(1,times=1000)
+
+fvSubAF: rep(1,times=1000)
+
+fvSubAM: rep(1,times=1000)
+
+Gamma_AF: rep(1,times=1000)
+
+Gamma_AM: rep(1,times=1000)
+
+Gamma_JF: rep(1,times=1000)
+
+Gamma_JM: rep(1,times=1000)
+
+Gamma_SubAF: rep(1,times=1000)
+
+Gamma_SubAM: rep(1,times=1000)
+
+Health_exp_combined_AF: rep(1,times=1000)
+
+Health_exp_combined_AM: rep(1,times=1000)
+
+Health_exp_combined_JF: rep(1,times=1000)
+
+Health_exp_combined_JM: rep(1,times=1000)
+
+Health_exp_combined_SubAF: rep(1,times=1000)
+
+Health_exp_combined_SubAM: rep(1,times=1000)
+
+Health_exp_selftx_AF: rep(1,times=1000)
+
+Health_exp_selftx_AM: rep(1,times=1000)
+
+Health_exp_selftx_JF: rep(1,times=1000)
+
+Health_exp_selftx_JM: rep(1,times=1000)
+
+Health_exp_selftx_SubAF: rep(1,times=1000)
+
+Health_exp_selftx_SubAM: rep(1,times=1000)
+
+Health_exp_trad_AF: rep(1,times=1000)
+
+Health_exp_trad_AM: rep(1,times=1000)
+
+Health_exp_trad_JF: rep(1,times=1000)
+
+Health_exp_trad_JM: rep(1,times=1000)
+
+Health_exp_trad_SubAF: rep(1,times=1000)
+
+Health_exp_trad_SubAM: rep(1,times=1000)
+
+Health_exp_vet_AF: rep(1,times=1000)
+
+Health_exp_vet_AM: rep(1,times=1000)
+
+Health_exp_vet_JF: rep(1,times=1000)
+
+Health_exp_vet_JM: rep(1,times=1000)
+
+Health_exp_vet_SubAF: rep(1,times=1000)
+
+Health_exp_vet_SubAM: rep(1,times=1000)
+
+hides_rate: 1
+
+Infrastructure_per_head_AF: 1
+
+Infrastructure_per_head_AM: 1
+
+Infrastructure_per_head_JF: 1
+
+Infrastructure_per_head_JM: 1
+
+Infrastructure_per_head_SubAF: 1
+
+Infrastructure_per_head_SubAM: 1
+
+Interest_rate: 1
+
+lab_non_health: 1
+
+Labour_cost_head_AF: rep(1,times=1000)
+
+Labour_cost_head_AM: rep(1,times=1000)
+
+Labour_cost_head_cd: rep(1,times=1000)
+
+Labour_cost_head_JF: rep(1,times=1000)
+
+Labour_cost_head_JM: rep(1,times=1000)
+
+Labour_cost_head_SubAF: rep(1,times=1000)
+
+Labour_cost_head_SubAM: rep(1,times=1000)
+
+lskeepers_all_handfeed_prpn_fd_purch: rep(1,times=1000)
+
+lskeepers_partial_feed_prpn_fd_purch: rep(1,times=1000)
+
+lwAF: rep(1,times=1000)
+
+lwAM: rep(1,times=1000)
+
+lwJF: rep(1,times=1000)
+
+lwJM: rep(1,times=1000)
+
+lwSubAF: rep(1,times=1000)
+
+lwSubAM: rep(1,times=1000)
+
+MEreqPerKG_AF: 1
+
+MEreqPerKG_AM: 1
+
+MEreqPerKG_JF: 1
+
+MEreqPerKG_JM: 1
+
+MEreqPerKG_SubAF: 1
+
+MEreqPerKG_SubAM: 1
+
+Methane_per_kgDMI_AF: 1
+
+Methane_per_kgDMI_AM: 1
+
+Methane_per_kgDMI_JF: 1
+
+Methane_per_kgDMI_JM: 1
+
+Methane_per_kgDMI_SubAF: 1
+
+Methane_per_kgDMI_SubAM: 1
+
+monthly_income_head_combined_hhcom_AF: rep(1,times=1000)
+
+monthly_income_head_combined_hhcom_AM: rep(1,times=1000)
+
+monthly_income_head_combined_hhcom_SubAF: rep(1,times=1000)
+
+monthly_income_head_combined_hhcom_SubAM: rep(1,times=1000)
+
+monthly_income_head_commercial_AF: rep(1,times=1000)
+
+monthly_income_head_commercial_AM: rep(1,times=1000)
+
+monthly_income_head_unpaid_AF: rep(1,times=1000)
+
+monthly_income_head_unpaid_AM: rep(1,times=1000)
+
+monthly_income_head_unpaid_SubAF: rep(1,times=1000)
+
+monthly_income_head_unpaid_SubAM: rep(1,times=1000)
+
+N_AF_t0: rep(1,times=1000)
+
+N_AM_t0: rep(1,times=1000)
+
+N_JF_t0: rep(1,times=1000)
+
+N_JM_t0: rep(1,times=1000)
+
+N_SubAF_t0: rep(1,times=1000)
+
+N_SubAM_t0: rep(1,times=1000)
+
+Num_timesteps: 12
+
+part: rep(1,times=1000)
+
+prolif: rep(1,times=1000)
+
+Prop_cart_AF: 1
+
+Prop_cart_AM: 1
+
+prop_combined_hhcom_AF: rep(1,times=1000)
+
+prop_combined_hhcom_AM: rep(1,times=1000)
+
+prop_combined_hhcom_SubAF: rep(1,times=1000)
+
+prop_combined_hhcom_SubAM: rep(1,times=1000)
+
+prop_commercial_AF: rep(1,times=1000)
+
+prop_commercial_AM: rep(1,times=1000)
+
+prop_health_care_combined: 1
+
+prop_health_care_selftx: 1
+
+prop_health_care_tradhealer: 1
+
+prop_health_care_vet: 1
+
+prop_unpaid_AF: rep(1,times=1000)
+
+prop_unpaid_AM: rep(1,times=1000)
+
+prop_unpaid_SubAF: rep(1,times=1000)
+
+prop_unpaid_SubAM: rep(1,times=1000)
+
+prpn_lskeepers_all_handfeed: rep(1,times=1000)
+
+prpn_lskeepers_partial_feed: rep(1,times=1000)
+
+timestep_Nof_days: 30
+
+WH_combined_hhcom_AF_current: rep(1,times=1000)
+
+WH_combined_hhcom_AF_ideal: rep(1,times=1000)
+
+WH_combined_hhcom_AM_current: rep(1,times=1000)
+
+WH_combined_hhcom_AM_ideal: rep(1,times=1000)
+
+WH_combined_hhcom_SubAF_current: rep(1,times=1000)
+
+WH_combined_hhcom_SubAF_ideal: rep(1,times=1000)
+
+WH_combined_hhcom_SubAM_current: rep(1,times=1000)
+
+WH_combined_hhcom_SubAM_ideal: rep(1,times=1000)
+
+WH_commercial_AF_current: rep(1,times=1000)
+
+WH_commercial_AF_ideal: rep(1,times=1000)
+
+WH_commercial_AM_current: rep(1,times=1000)
+
+WH_commercial_AM_ideal: rep(1,times=1000)
+
+WH_unpaid_AF_current: rep(1,times=1000)
+
+WH_unpaid_AF_ideal: rep(1,times=1000)
+
+WH_unpaid_AM_current: rep(1,times=1000)
+
+WH_unpaid_AM_ideal: rep(1,times=1000)
+
+WH_unpaid_SubAF_current: rep(1,times=1000)
+
+WH_unpaid_SubAF_ideal: rep(1,times=1000)
+
+WH_unpaid_SubAM_current: rep(1,times=1000)
+
+WH_unpaid_SubAM_ideal: rep(1,times=1000)
+
