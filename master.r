@@ -7,11 +7,13 @@
 library(yaml)
 library(tools)
 
-numSamples <- 100
-seedValue <- 123
-
 # working directory
 setwd(choose.dir())
+
+rm(list=ls())
+assign("last.warning", NULL, envir = baseenv())
+numSamples <- 100
+seedValue <- 123
 
 # Create the YAML input files and run DPM
 source("create_yaml_files.R")
