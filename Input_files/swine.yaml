@@ -1,0 +1,300 @@
+##### swine #####
+
+
+species: swine
+nruns: 100
+seed_value: NULL
+
+
+Alpha_AF: rep(1, times=100)
+
+Alpha_AM: rep(1, times=100)
+
+Alpha_GF: rep(1, times=100)
+
+Alpha_GltF: rep(1, times=100)
+
+Alpha_GltM: rep(1, times=100)
+
+Alpha_GM: rep(1, times=100)
+
+Alpha_JF: rep(1, times=100)
+
+Alpha_JM: rep(1, times=100)
+
+Alpha_SubAF: rep(1, times=100)
+
+Alpha_SubAM: rep(1, times=100)
+
+Beta_AF: 1
+
+Beta_AM: 1
+
+Beta_GF: 1
+
+Beta_GltF: 1
+
+Beta_GltM: 1
+
+Beta_GM: 1
+
+Beta_JF: 1
+
+Beta_JM: 1
+
+Beta_SubAF: 1
+
+Beta_SubAM: 1
+
+DM_in_feed: rep(1, times=100)
+
+DM_req_prpn_AF: rep(1, times=100)
+
+DM_req_prpn_AM: rep(1, times=100)
+
+DM_req_prpn_GF: rep(1, times=100)
+
+DM_req_prpn_GltF: rep(1, times=100)
+
+DM_req_prpn_GltM: rep(1, times=100)
+
+DM_req_prpn_GM: rep(1, times=100)
+
+DM_req_prpn_JF: rep(1, times=100)
+
+DM_req_prpn_JM: rep(1, times=100)
+
+DM_req_prpn_SubAF: rep(1, times=100)
+
+DM_req_prpn_SubAM: rep(1, times=100)
+
+Feed_cost_kg: rep(1, times=100)
+
+fvAF: rep(1, times=100)
+
+fvAM: rep(1, times=100)
+
+fvGF: rep(1, times=100)
+
+fvGltF: rep(1, times=100)
+
+fvGltM: rep(1, times=100)
+
+fvGM: rep(1, times=100)
+
+fvJF: rep(1, times=100)
+
+fvJM: rep(1, times=100)
+
+fvSubAF: rep(1, times=100)
+
+fvSubAM: rep(1, times=100)
+
+fw_GF: rep(1, times=100)
+
+fw_GM: rep(1, times=100)
+
+Gamma_AF: rep(1, times=100)
+
+Gamma_AM: rep(1, times=100)
+
+Gamma_GF: rep(1, times=100)
+
+Gamma_GltF: rep(1, times=100)
+
+Gamma_GltM: rep(1, times=100)
+
+Gamma_GM: rep(1, times=100)
+
+Gamma_JF: rep(1, times=100)
+
+Gamma_JM: rep(1, times=100)
+
+Gamma_SubAF: rep(1, times=100)
+
+Gamma_SubAM: rep(1, times=100)
+
+Health_exp_prev_AF: rep(1, times=100)
+
+Health_exp_prev_AM: rep(1, times=100)
+
+Health_exp_prev_GF: rep(1, times=100)
+
+Health_exp_prev_GltF: rep(1, times=100)
+
+Health_exp_prev_GltM: rep(1, times=100)
+
+Health_exp_prev_GM: rep(1, times=100)
+
+Health_exp_prev_JF: rep(1, times=100)
+
+Health_exp_prev_JM: rep(1, times=100)
+
+Health_exp_prev_SubAF: rep(1, times=100)
+
+Health_exp_prev_SubAM: rep(1, times=100)
+
+Health_exp_treatment_AF: rep(1, times=100)
+
+Health_exp_treatment_AM: rep(1, times=100)
+
+Health_exp_treatment_GF: rep(1, times=100)
+
+Health_exp_treatment_GltF: rep(1, times=100)
+
+Health_exp_treatment_GltM: rep(1, times=100)
+
+Health_exp_treatment_GM: rep(1, times=100)
+
+Health_exp_treatment_JF: rep(1, times=100)
+
+Health_exp_treatment_JM: rep(1, times=100)
+
+Health_exp_treatment_SubAF: rep(1, times=100)
+
+Health_exp_treatment_SubAM: rep(1, times=100)
+
+Infrastructure_per_head_AF: 1
+
+Infrastructure_per_head_AM: 1
+
+Infrastructure_per_head_GF: 1
+
+Infrastructure_per_head_GltF: 1
+
+Infrastructure_per_head_GltM: 1
+
+Infrastructure_per_head_GM: 1
+
+Infrastructure_per_head_JF: 1
+
+Infrastructure_per_head_JM: 1
+
+Infrastructure_per_head_SubAF: 1
+
+Infrastructure_per_head_SubAM: 1
+
+Interest_rate: 1
+
+lab_non_health: 1
+
+Labour_cost_head_AF: rep(1, times=100)
+
+Labour_cost_head_AM: rep(1, times=100)
+
+Labour_cost_head_GF: rep(1, times=100)
+
+Labour_cost_head_GltF: rep(1, times=100)
+
+Labour_cost_head_GltM: rep(1, times=100)
+
+Labour_cost_head_GM: rep(1, times=100)
+
+Labour_cost_head_JF: rep(1, times=100)
+
+Labour_cost_head_JM: rep(1, times=100)
+
+Labour_cost_head_SubAF: rep(1, times=100)
+
+Labour_cost_head_SubAM: rep(1, times=100)
+
+lwAF: rep(1, times=100)
+
+lwAM: rep(1, times=100)
+
+lwGF: rep(1, times=100)
+
+lwGltF: rep(1, times=100)
+
+lwGltM: rep(1, times=100)
+
+lwGM: rep(1, times=100)
+
+lwJF: rep(1, times=100)
+
+lwJM: rep(1, times=100)
+
+lwSubAF: rep(1, times=100)
+
+lwSubAM: rep(1, times=100)
+
+Man_A: rep(1, times=100)
+
+Man_G: rep(1, times=100)
+
+Man_Glt: rep(1, times=100)
+
+Man_J: rep(1, times=100)
+
+Man_SubA: rep(1, times=100)
+
+Man_value: rep(1, times=100)
+
+MEreqPerKG_AF: 1
+
+MEreqPerKG_AM: 1
+
+MEreqPerKG_GF: 1
+
+MEreqPerKG_GltF: 1
+
+MEreqPerKG_GltM: 1
+
+MEreqPerKG_GM: 1
+
+MEreqPerKG_JF: 1
+
+MEreqPerKG_JM: 1
+
+MEreqPerKG_SubAF: 1
+
+MEreqPerKG_SubAM: 1
+
+Methane_per_kgDMI_AF: 1
+
+Methane_per_kgDMI_AM: 1
+
+Methane_per_kgDMI_GF: 1
+
+Methane_per_kgDMI_GltF: 1
+
+Methane_per_kgDMI_GltM: 1
+
+Methane_per_kgDMI_GM: 1
+
+Methane_per_kgDMI_JF: 1
+
+Methane_per_kgDMI_JM: 1
+
+Methane_per_kgDMI_SubAF: 1
+
+Methane_per_kgDMI_SubAM: 1
+
+N_AF_t0: rep(1, times=100)
+
+N_AM_t0: rep(1, times=100)
+
+N_GF_t0: rep(1, times=100)
+
+N_GltF_t0: rep(1, times=100)
+
+N_GltM_t0: rep(1, times=100)
+
+N_GM_t0: rep(1, times=100)
+
+N_JF_t0: rep(1, times=100)
+
+N_JM_t0: rep(1, times=100)
+
+N_SubAF_t0: rep(1, times=100)
+
+N_SubAM_t0: rep(1, times=100)
+
+Num_timesteps: 12
+
+Prop_kept_breeding_F: 1
+
+Prop_kept_breeding_M: 1
+
+timestep_Nof_days: 30
+
