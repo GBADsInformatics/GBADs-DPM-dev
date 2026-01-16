@@ -16,7 +16,7 @@ run_compartmental_model <- function(seed_value = NULL) {
   ### Functions ###
 
 #  calculate_mu <- function(part, prolif) {
-#    return ((sample(part, size = nruns, replace = TRUE) * sample(prolif, size = nruns, replace = TRUE)) / Num_timeste)
+#    return ((sample(part, size = nruns, replace = TRUE) * sample(prolif, size = nruns, replace = TRUE)) / Num_timesteps)
 #  }
     
   calculate_purchased_feed <- function(kg_dm_req, lskeepers_purch_feed, feed_paid_for, dm_in_feed) {
